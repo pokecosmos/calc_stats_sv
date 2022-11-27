@@ -259,7 +259,7 @@ function moji(){
 				text.value +="(";
 				text.value +=document.nForm.elements[dn[i]].value;
 				text.value +=")";
-				if(i==0){text3 += "H"}
+				if(i==0){text3 += " H"}
 				else if(i==1){text3 += " A"}
 				else if(i==2){text3 += " B"}
 				else if(i==3){text3 += " C"}
