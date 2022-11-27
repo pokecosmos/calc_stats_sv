@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body{
+	line-height: 25px;
+	background-color: #f0f8ff;
+	color: #000000;
+	font-family: "ＭＳ Ｐゴシック",sans-serif;
+	font-size: 16px;
+}
+p {
+	line-height: 0px;
+}
+input{
+	width: 47px;
+}
+input.name{
+	width: 160px;
+}
+input.button{
+	width: 30px;
+	padding: 1px;
+}
+input.taikyu{
+	width: 65px;
+	padding: 1px;
+}
+input.updown{
+	width: 19px;
+	padding: 1px;
+}
+input.ALL0{
+	width: 38px;
+	padding: 1px;
+}
+input.check{
+	width: 20px;
+}
+input.mega{
+	width: 70px;
+	height: 26px;
+	visibility: hidden;
+}
+
+/*-- スマホ版非表示設定  --*/
+@media screen and (max-width: 500px){
+	input.pc{
+		display:none;
+	}
+}
