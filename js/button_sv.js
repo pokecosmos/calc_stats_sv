@@ -9,8 +9,8 @@ function mega_button(){
 		visi(1, "パルデア");
 	}else if((p=="ロトム")||(p=="ロトム(基本)")||(p=="ロトム(FC)")){
 		visi(2, "基本", "FC");
-	}else if((p=="ルガルガン")||(p=="ルガルガン(真昼)")||(p=="ルガルガン(真夜中)")||(p=="ルガルガン(黄昏)")){
-		visi(3, "真昼", "真夜中", "黄昏");
+	}else if((p=="ルガルガン")||(p=="ルガルガン(真昼)")||(p=="ルガルガン(真夜中)")){
+		visi(2, "真昼", "真夜中");
 	}else if((p=="コオリッポ")||(p=="コオリッポ(アイス)")||(p=="コオリッポ(ナイス)")){
 		visi(2, "アイス", "ナイス");
 	}else if((p=="イエッサン")||(p=="イエッサン♂")||(p=="イエッサン♀")){
@@ -98,13 +98,11 @@ function megachange(num){
  		}else if(parseInt(num)==1){
  			document.nForm.elements['pokename'].value="ロトム(FC)";
  		}
-	}else if((p=="ルガルガン")||(p=="ルガルガン(真昼)")||(p=="ルガルガン(真夜中)")||(p=="ルガルガン(黄昏)")){
+	}else if((p=="ルガルガン")||(p=="ルガルガン(真昼)")||(p=="ルガルガン(真夜中)")){
 		if(parseInt(num)==0){
  			document.nForm.elements['pokename'].value="ルガルガン(真昼)";
  		}else if(parseInt(num)==1){
  			document.nForm.elements['pokename'].value="ルガルガン(真夜中)";
- 		}else if(parseInt(num)==2){
- 			document.nForm.elements['pokename'].value="ルガルガン(黄昏)";
  		}
 	}else if((p=="コオリッポ")||(p=="コオリッポ(アイス)")||(p=="コオリッポ(ナイス)")){
 		if(parseInt(num)==0){
