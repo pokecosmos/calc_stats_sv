@@ -46,4 +46,7 @@ input.mega{
 	input.pc{
 		display:none;
 	}
+	table{
+		font-size: 12px;
+	}
 }

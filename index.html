@@ -95,11 +95,15 @@ document.close();
 <td colspan="2" align="center"><input type="button" class="taikyu" name="taikyu" value="耐久振り" onclick="taikyu_tyosei()"></td></tr></table>
 </br>
 
-<table border="0">
+<table border="0" width="400">
 
-<tr><td>S実数値<input type="number" value="120" name="s_result" style="width:52px;">
+<tr><td>S実数値</td><td>ランク</td><td>特性</td><td>道具</td><td>麻痺</td><td>追い風</td>
+</tr>
+<tr>
+<td>
+<input type="number" value="120" name="s_result" style="width:52px;">
 </td>
-<td>ランク
+<td>
 <select name="rank" size="1" onChange="scalc()">
 <option value="6">+6</option>
 <option value="5">+5</option>
@@ -116,7 +120,7 @@ document.close();
 <option value="-6">-6</option>
 </select>
 </td>
-<td>特性
+<td>
 <select name="skill" size="1" onChange="scalc()">
 <option value="4">2倍</option>
 <option value="3">1.5倍</option>
@@ -124,7 +128,7 @@ document.close();
 <option value="1">半減</option>
 </select>
 </td>
-<td>道具
+<td>
 <select name="sitem" size="1" onChange="scalc()">
 <option value="4">2倍</option>
 <option value="3">1.5倍</option>
@@ -132,9 +136,7 @@ document.close();
 <option value="1">半減</option>
 </select>
 </td>
-
-
-<td>麻痺</td><td><input type="checkbox" class="check" name="ch_m" onclick="scalc()"></td><td>追い風</td><td><input type="checkbox" class="check" name="ch_o" onclick="scalc()"></td></tr>
+<td><input type="checkbox" class="check" name="ch_m" onclick="scalc()"></td><td><input type="checkbox" class="check" name="ch_o" onclick="scalc()"></td></tr>
 </table>
 
 
