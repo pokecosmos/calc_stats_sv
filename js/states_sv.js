@@ -437,19 +437,3 @@ function taikyu_tyosei(){
 	document.nForm.elements[nn[4]].value = x_nd;
 	dcalc(0);dcalc(2); dcalc(4);
 }
-
-
-//検索候補つくれてないのでとりあえずカタカナ変換だけ
-function pokeserach(){
-	var elm = hiraganaToKatakana(document.getElementById('pokename').value);
-	document.getElementById('pokename').value = elm;
-}
-
-//ひらがな→カタカナ変換
-function hiraganaToKatakana(src) {
-	return src.replace(/[\u3041-\u3096]/g, function(match) {
-		var chr = match.charCodeAt(0) + 0x60;
-		return String.fromCharCode(chr);
-	});
-}
-
