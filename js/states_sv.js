@@ -437,3 +437,12 @@ function taikyu_tyosei(){
 	document.nForm.elements[nn[4]].value = x_nd;
 	dcalc(0);dcalc(2); dcalc(4);
 }
+
+//--個体値リセット
+function kotaiti_riset(){
+  for(i=0; i<6; i++){
+    document.nForm.elements[kn[i]].value = 31;
+  }
+  k_color();
+}
+
