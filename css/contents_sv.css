@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 body{
-	line-height: 25px;
 	background-color: #f0f8ff;
 	color: #000000;
 	font-family: "ＭＳ Ｐゴシック",sans-serif;
@@ -39,6 +38,20 @@ input.mega{
 	width: 70px;
 	height: 26px;
 	visibility: hidden;
+}
+.class3{
+    line-height: 25px;
+}
+.class4{
+    line-height: 16px;
+    font-size: 12px;
+}
+
+table.class5{
+    background-color:white;
+}
+.class7{
+    display :none;
 }
 
 /*-- スマホ版非表示設定  --*/

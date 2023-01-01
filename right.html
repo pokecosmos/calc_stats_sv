@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="ja">
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -14,7 +13,6 @@
 <meta name="keyword" content="努力値,個体値,ポケモン,ステータス,計算">
 <meta name="viewport" content="width=device-width,user-scalable=yes,initial-scale=1.0,maximum-scale=3.0">
 <title>ステータス計算機 for スカーレット/バイオレット</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/contents_sv.css">
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 <script type="text/javascript" src="js/states_sv.js"></script>
@@ -37,10 +35,10 @@ var nnn = 175;
  -->
 </script>
 </head>
-<body >
-  <div class="base">
-    <div class="class1">
-      <font size="5" color="#87CEEB" face="ＭＳ Ｐ明朝,ＭＳ 明朝">ポケモンステータス計算機 for スカーレット/バイオレット</font></br></br>
+
+<body>
+<input type="button" value="切り替え" class="taikyu" onclick="kirikae()">
+</br></br><div class="class6" id="kirikae_1" value="0">
 <form name="nForm">
 <table border="0">
 <tr><td></td><td colspan="2"  width="160"><input width="300" type="search" id ="pokename" name = "pokename" class="name" value="" placeholder="ポケモン名" onblur="setpokemon()" onchange="kotaiti_riset()">
@@ -147,22 +145,39 @@ document.close();
 
 <br/>
 <hr/>
-<textarea placeholder="？？？　まじめ 175-120-120-120-120-120" rows="4" cols="70" class="hyoji" id="target" value=""></textarea><hr/>
+<textarea placeholder="？？？　まじめ 175-120-120-120-120-120" rows="4" cols="70" class="hyoji" id="target" value=""></textarea><hr/></div>
+<div class="class7" id="kirikae_2">
+</br>
+<table border="1" class="class5"><tr><th>HP調整</th><th>内容</th></tr>
+<tr><td>2n</td><td>はらだいこでオボンの実発動</br>
+4倍ステルスロック、いかりのまえば等でオボンの実発動</td></tr>
+<tr><td>2n+1</td><td>ダメージ割合50%未満の技を2耐え</td></tr>
+<tr><td>16n</td><td>たべのこし、グラスフィールド等の回復割合最大</td></tr>
+<tr><td>16n-1</td><td>すなあらし、やけど、もうどく等のダメージ割合最小</br>
+(例) HP159、HP175、HP191、HP207</td></tr>
+<tr><td>4n</td><td>みがわり3回でHP1/4状態になり、カムラの実などが発動</td></tr>
+<tr><td>4n+1~3</td><td>みがわり4回使用可能</td></tr>
+<tr><td>8n+1~3</td><td>ポイズンヒールの回復2回でみがわり1回分のHP回復</br>
+(例) どくどくだまポイズンヒール身代わりキノガッサのHP145～147</td></tr>
+<tr><td>16n+1~3</td><td>たべのこしの回復4回でみがわり1回分のHP回復</br>
+(例) ムラっけたべのこし身代わりオニゴーリのHP161～163</br>
+回復量10、身代わりHP40の場合HP管理が非常に楽になる。</td></tr>
+<tr><td>6n-1</td><td>ゴツゴツメット、まきびし2回等1/6ダメージ割合最小</td></tr>
+<tr><td>8n-1</td><td>1/8ダメージ割合最小</td></tr>
+<tr><td>10n-1</td><td>いのちのたまダメージ割合最小</td></tr>
+<tr><td>50n+1</td><td>ちきゅうなげ等の固定ダメージを多く耐える</td></tr>
+<tr><td>205以上</td><td>ちきゅうなげ等の固定ダメージをみがわりが耐える</td></tr>
+</table>
+<br>
+<div class="class4">
+割合ダメージ・割合回復は基本的に切り捨てです。</br></br>
+HPを調整してを効率のいい数字に近づける場合は防御・特防の数値も調整しないとダメージ割合が変わります。</br>
+効率のいいHP数値にするためにHPを少し低くした場合、ポケモンの耐久が低くなります。</br>
+効率のいいHP数値にするためにHPを少し高くした場合、ちょうど耐える技が特になければ相手の技を耐える回数は変わりません。</br></br>
+いのちのたま用のHP調整の場合、相手の攻撃＋いのちのたまダメージを耐える耐久調整をする場合でなければ火力と素早さを重視した調整を施したほうがいいです。
+定数ダメージを何度も受けるほど居座り性能がないポケモンは、複数回の定数ダメージ＋仮想敵の任意の攻撃耐え調整ができないのであれば定数ダメージ意識のHP調整は不要です。</br></br>
+HP調整を考える際ははHPだけを調整するのではなく、任意の技と定数ダメージや回復をそれぞれ何回受けるか具体的な状況を想定したうえで防御・特防の配分と合わせて努力値の配分を考える必要があります。
+</div></div>
 </form>
-<div class="class3">
-性格、努力値などからポケモンの能力値を求められます。<br/>
-能力値から必要な努力値を逆算することもできます。<br/>
-その他の仕様、更新などは<a  target="_blank" href="http://cloyster.blog.jp/archives/38804638.html">ブログ</a>に書いています。<br/><br/>
-<a href="https://pokecosmos.github.io/calc_stats_oras/">6世代用(ORAS用)のステータス計算機</a><br/>
-<a href="https://pokecosmos.github.io/calc_stats_sm/">7世代用(USUM用)のステータス計算機</a><br/>
-<a href="https://pokecosmos.github.io/calc_stats_galar/">8世代用(剣盾用)のステータス計算機</a><br/>
-制作者 <a href="https://twitter.com/poke_cosmos">@poke_cosmos</a>
-</div>
-    </div>
-    <div class="class2">
-      <iframe src="right.html" width="100%" height="100%"></iframe>
-      <noframes><p>お使いのブラウザはフレームをサポートしていないか、フレームを許可しないように設定されているようです。</p></noframes>
-    </div>
-  </div>
 </body>
 </html>

@@ -446,3 +446,16 @@ function kotaiti_riset(){
   k_color();
 }
 
+//--切り替えボタン
+
+function kirikae(){
+  if(document.getElementById("kirikae_1").value == 0){
+    document.getElementById("kirikae_1").style.display = 'block';
+    document.getElementById("kirikae_2").style.display = 'none';
+    document.getElementById("kirikae_1").value = 1;
+  }else{
+    document.getElementById("kirikae_1").style.display = 'none';
+    document.getElementById("kirikae_2").style.display = 'block';
+    document.getElementById("kirikae_1").value = 0;
+  }
+}
