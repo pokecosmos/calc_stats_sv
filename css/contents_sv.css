@@ -54,6 +54,9 @@ table.class5{
 .class7{
     display :none;
 }
+.class8{
+    width:460px;
+}
 
 /*-- スマホ版非表示設定  --*/
 @media screen and (max-width: 500px){
