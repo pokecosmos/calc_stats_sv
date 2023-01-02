@@ -459,3 +459,7 @@ function kirikae(){
     document.getElementById("kirikae_1").value = 0;
   }
 }
+
+function titlechange(){
+  document.title=document.getElementById("pokename").value + " | ポケモンステータス計算機 for スカーレット/バイオレット";
+}
