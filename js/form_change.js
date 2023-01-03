@@ -67,13 +67,13 @@ function visi(num, var1, var2, var3, var4){
 	if(num <= 2){
 		document.nForm.elements['mega2'].style.visibility="hidden";
 	}else{
-		document.nForm.elements['mega2'].value = var2;
+		document.nForm.elements['mega2'].value = var3;
 		document.nForm.elements['mega2'].style.visibility="visible";
 	}
 	if(num <= 3){
 		document.nForm.elements['mega3'].style.visibility="hidden";
 	}else{
-		document.nForm.elements['mega3'].value = var2;
+		document.nForm.elements['mega3'].value = var4;
 		document.nForm.elements['mega3'].style.visibility="visible";
 	}
 }
