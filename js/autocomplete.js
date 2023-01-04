@@ -28,6 +28,7 @@ $(function(){
 
 			//候補が選択されたらsetpokemon関数を呼び出す
 			setpokemon();
+			titlechange();
 			kotaiti_riset();
 		}
 	});

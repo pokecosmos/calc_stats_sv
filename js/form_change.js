@@ -148,4 +148,5 @@ function megachange(num){
 	}
 	document.nForm.elements['pokename'].value = p;
 	setpokemon();
+	titlechange();
 }
