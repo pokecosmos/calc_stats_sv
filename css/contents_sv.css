@@ -57,6 +57,9 @@ table.class5{
 .class8{
     width:460px;
 }
+textarea{
+    width:550px;
+}
 
 /*-- スマホ版非表示設定  --*/
 @media screen and (max-width: 500px){
@@ -65,5 +68,8 @@ table.class5{
 	}
 	table{
 		font-size: 12px;
+	}
+	textarea{
+	    width:100%;
 	}
 }
