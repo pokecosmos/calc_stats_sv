@@ -463,3 +463,125 @@ function kirikae(){
 function titlechange(){
   document.title=document.getElementById("pokename").value + " | ポケモンステータス計算機 for スカーレット/バイオレット";
 }
+
+
+function getTweet() {
+//ツイート内容をセット
+var text = get_tyousei();
+text = encodeURIComponent(text);
+var url = "https://pokecosmos.github.io/calc_stats_sv/";
+window.open().location.href = ("https://twitter.com/share?url="+ url +"&text="+ text + "&count=none&lang=ja");
+}
+
+function get_tyousei(){
+	var text = document.nForm.elements['pokename'].value;
+	var text2 = "";//実数値
+	var text3 = "";//努力値
+	
+	for(i=1; i<6; i++){
+		if(document.nForm.elements[chup[i]].checked == true){
+			break;
+		}
+	}
+	for(j=1; j<6; j++){
+		if(document.nForm.elements[chdw[j]].checked == true){
+			break;
+		}
+	}
+	switch(i){
+		case 1:
+			if(j == 2){
+				text3 ="さみしがり";
+			}else if(j == 3){
+				text3 ="いじっぱり";
+			}else if(j == 4){
+				text3 ="やんちゃ";
+			}else if(j == 5){
+				text3 ="ゆうかん";
+			}else{
+				text3 ="？？？";
+			}
+			break
+		case 2:
+			if(j == 1){
+				text3 ="ずぶとい";
+			}else if(j == 3){
+				text3 ="わんぱく";
+			}else if(j == 4){
+				text3 ="のうてんき";
+			}else if(j == 5){
+				text3 ="のんき";
+			}else{
+				text3 ="？？？";
+			}
+			break
+		case 3:
+			if(j == 1){
+				text3 ="ひかえめ";
+			}else if(j == 2){
+				text3 ="おっとり";
+			}else if(j == 4){
+				text3 ="うっかりや";
+			}else if(j == 5){
+				text3 ="れいせい";
+			}else{
+				text3 ="？？？";
+			}
+			break;
+		case 4:
+			if(j == 1){
+				text3 ="おだやか";
+			}else if(j == 2){
+				text3 ="おとなしい";
+			}else if(j == 3){
+				text3 ="しんちょう";
+			}else if(j == 5){
+				text3 ="なまいき";
+			}else{
+				text3 ="？？？";
+			}
+			break;
+		case 5:
+			if(j == 1){
+				text3 ="おくびょう";
+			}else if(j == 2){
+				text3 ="せっかち";
+			}else if(j == 3){
+				text3 ="ようき";
+			}else if(j == 4){
+				text3 ="むじゃき";
+			}else{
+				text3 ="？？？";
+			}
+			break;
+		case 6:
+			if(j == 6){
+				text3 ="まじめ";
+			}else{
+				text3 ="？？？";
+			}
+			break;
+	}
+	
+	for(i=0; i<6; i++){
+		if(document.nForm.elements[nn[i]].value >= 1){
+			text2 += document.nForm.elements[nn[i]].value;
+			if(document.nForm.elements[dn[i]].value > 0){
+				if(i==0){text3 += " H"}
+				else if(i==1){text3 += " A"}
+				else if(i==2){text3 += " B"}
+				else if(i==3){text3 += " C"}
+				else if(i==4){text3 += " D"}
+				else if(i==5){text3 += " S"}
+				text3 += document.nForm.elements[dn[i]].value;
+			}
+		}else{
+			text2 += "×";
+		}
+		if(i <5){
+			text2 += "-";
+		}
+	}
+	text += " (" + text3 + ") [" + text2 + "]";
+	return(text);
+}
