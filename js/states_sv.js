@@ -99,7 +99,7 @@ function ncalc(num){
 		}
 	}
 	document.nForm.elements[nn[num]].value=n;
-	moji(); k_color(); scalc();
+	k_color(); scalc();moji();
 }
 //努力値を逆算する
 function dcalc(num){
@@ -141,7 +141,7 @@ function dcalc(num){
 		document.nForm.elements[dn[num]].value = n;
 	}
 	
-	dsum();moji();scalc();
+	dsum();scalc();moji();
 }
 //残り努力値の合計を計算する
 function dsum(){
@@ -156,7 +156,7 @@ function dsum(){
 	}else{
 		document.nForm.elements['d6'].style.color = "black";
 	}
-	
+	taikyu_hyoji_2();
 }
 //ステータスをテキストボックス外に表示する
 function moji(){
@@ -281,6 +281,7 @@ function moji(){
 	text.value += "\n";
 	text.value += text3;
 	
+	taikyu_hyoji_2();
 }
 
 
@@ -299,7 +300,9 @@ function setpokemon(){
 			break;
 		}
 	}
-	ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5);moji();
+	ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5);
+	taikyu_hyoji_2();
+	moji();
 }
 //努力値をすべて0にする
 function dreset(){
@@ -307,8 +310,9 @@ function dreset(){
 		document.nForm.elements[dn[i]].value = 0;
 		document.nForm.elements[dn[i]].style.color = "black";
 	}
-	dsum();moji();
+	dsum();
 	ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5);
+	moji();
 }
 //種族値合計を計算する
 function ssum(){
@@ -385,7 +389,42 @@ function scalc(){
 	document.nForm.elements['s_result'].value = n;
 }
 
-
+//耐久振りボタン表示・非表示
+function taikyu_hyoji_2(){//努力値オーバー排除、性格テキトー・ヌケニン排除
+	var p = document.nForm.elements['pokename'].value;
+	j=0; up=0; dw=0;
+	for(i=0; i<6; i++){
+		if((!document.nForm.elements[nn[i]].value)||(document.nForm.elements[dn[i]].value > 252)){
+			j++;
+		}
+	}
+	if(document.nForm.elements[dn[6]].value < 0){
+		j++;
+	}
+	for(i=1; i<6; i++){
+		if(document.nForm.elements[chup[i]].checked == true){
+			up = 1;
+		}
+		if(document.nForm.elements[chdw[i]].checked == true){
+			dw = 1;
+		}
+	}
+	if(p!="ヌケニン"){
+		if((j==0)&&(up == dw)){
+			document.nForm.elements['taikyu'].style.visibility="visible";
+			document.nForm.elements['taikyu2'].style.visibility="visible";
+		}else if((j==0)&&(up != dw)){
+			document.nForm.elements['taikyu'].style.visibility="visible";
+			document.nForm.elements['taikyu2'].style.visibility="hidden";
+		}else{
+			document.nForm.elements['taikyu'].style.visibility="hidden";
+			document.nForm.elements['taikyu2'].style.visibility="hidden";
+		}
+	}else{
+		document.nForm.elements['taikyu'].style.visibility="hidden";
+		document.nForm.elements['taikyu2'].style.visibility="hidden";
+	}
+}
 
 
 //耐久振りボタン計算
@@ -436,6 +475,240 @@ function taikyu_tyosei(){
 	document.nForm.elements[nn[2]].value = x_nb;
 	document.nForm.elements[nn[4]].value = x_nd;
 	dcalc(0);dcalc(2); dcalc(4);
+}
+
+//調整チェック計算用　実数値計算
+function ncalc3(num, dnum, seikaku){
+	
+	n = Math.floor(dnum / 4);
+	n += parseInt(document.nForm.elements[sn[num]].value) * 2 + parseInt(document.nForm.elements[kn[num]].value);
+	n = Math.floor(n * parseInt(document.nForm.elements['L0'].value) / 100);
+	if(num == 0){//H能力値の計算
+		n += 10 + parseInt(document.nForm.elements['L0'].value);
+	}else{//ABCDS能力値の計算
+		n += 5;
+		if(seikaku == 1){
+			n = Math.floor(n*1.1);
+		}else if(seikaku == -1){
+			n = Math.floor(n*0.9);
+		}
+	}
+	return(n);
+}
+
+//調整チェック計算用　努力値計算
+function dcalc3(num, seikaku){
+	n = document.nForm.elements[nn[num]].value;
+	
+	if(num==0){
+		n = n - document.nForm.elements['L0'].value - 10;
+	}else{
+		if(seikaku == 1){
+			n = Math.ceil(n/1.1);
+		}else if(seikaku == -1){
+			n = Math.ceil(n/0.9);
+		}
+		n -= 5;
+	}
+	n = Math.ceil(n * 100 / document.nForm.elements['L0'].value);
+	n = (n - parseInt(document.nForm.elements[sn[num]].value) *2 - parseInt(document.nForm.elements[kn[num]].value))*4;
+	
+	return(n);
+}
+
+//調整チェックボタン-------------------------
+function tyosei_check(){
+	//能力値取得
+	now_nh = parseInt(document.nForm.elements[nn[0]].value); now_nb = parseInt(document.nForm.elements[nn[2]].value); now_nd = parseInt(document.nForm.elements[nn[4]].value);
+	now_na = parseInt(document.nForm.elements[nn[1]].value); now_nc = parseInt(document.nForm.elements[nn[3]].value); now_ns = parseInt(document.nForm.elements[nn[5]].value);
+	now_dh = parseInt(document.nForm.elements[dn[0]].value); now_db = parseInt(document.nForm.elements[dn[2]].value); now_dd = parseInt(document.nForm.elements[dn[4]].value);
+	now_da = parseInt(document.nForm.elements[dn[1]].value); now_dc = parseInt(document.nForm.elements[dn[3]].value); now_ds = parseInt(document.nForm.elements[dn[5]].value);
+	now_sisu_hb = now_nh * now_nb;
+	now_sisu_hd = now_nh * now_nd;
+	
+	//性格取得
+	fin_up = 0; fin_dw = 0;
+	for(i=1;i<6;i++){
+		if(document.nForm.elements[chup[i]].checked == true){
+			fin_up = i;
+		}else if(document.nForm.elements[chdw[i]].checked == true){
+			fin_dw = i;
+		}
+	}
+
+	//その他
+	d_max = now_dh + now_db + now_dd + now_da + now_dc + now_ds;
+	d2_max = -1;
+	x_nh = now_nh; x_nb = now_nb; x_nd = now_nd; x_na = now_na; x_nc = now_nc; x_ns = now_ns;
+	x_dh = now_dh; x_da = now_da; x_db = now_db; x_dc = now_dc; x_dd = now_dd; x_ds = now_ds;
+	fin_nh = now_nh; fin_nb = now_nb; fin_nd = now_nd; fin_na = now_na; fin_nc = now_nc; fin_ns = now_ns;
+	x_sisu_hbd = 0; fin_sisu_hbd = 0;
+	
+	for(var_up=0; var_up<6; var_up++){
+		for(var_dw=0; var_dw<6; var_dw++){
+			//if(((var_up == 0)&&(var_dw == 0))||((var_up >= 1)&&(var_dw >= 1))){//機能してない。n=2、m=2が通ってる。
+			if((var_up >= 1)&&(var_dw >= 1)&&(var_up!=var_dw)){
+			}else if((var_up == 0)&&(var_dw == 0)){
+			}else{
+				continue;
+			}
+			//指定の性格の場合の計算
+			//A努力値
+			if(var_up == 1){
+				seikaku = 1;
+			}else if(var_dw == 1){
+				seikaku = -1;
+			}else{
+				seikaku = 0;
+			}
+			var_da = dcalc3(1, seikaku);
+			if(var_da > 252){
+				continue;
+			}else if(var_da < 0){
+				var_da = 0;
+			}
+			var_na = ncalc3(1, var_da, seikaku);
+			
+			//C努力値
+			if(var_up == 3){
+				seikaku = 1;
+			}else if(var_dw == 3){
+				seikaku = -1;
+			}else{
+				seikaku = 0;
+			}
+			var_dc = dcalc3(3, seikaku);
+			if(var_dc > 252){
+				continue;
+			}else if(var_dc < 0){
+				var_dc = 0;
+			}
+			var_nc = ncalc3(3, var_dc, seikaku);
+			//S努力値
+			if(var_up == 5){
+				seikaku = 1;
+			}else if(var_dw == 5){
+				seikaku = -1;
+			}else{
+				seikaku = 0;
+			}
+			var_ds = dcalc3(5, seikaku);
+			if(var_ds > 252){
+				continue;
+			}else if(var_ds < 0){
+				var_ds = 0;
+			}
+			var_ns = ncalc3(5, var_ds, seikaku);
+			//HP努力値
+			var_dh = d_max - var_da - var_dc - var_ds;
+			if(var_dh > 252){
+				var_dh = 252;
+			}else if(var_dh < 0){
+				continue;
+			}
+			for(var_dh; var_dh >= 0; var_dh--){
+				seikaku = 0;
+				var_nh = ncalc3(0, var_dh, seikaku);
+				
+				//B努力値
+				var_db = d_max - var_dh - var_da - var_dc - var_ds;
+				if(var_db > 252){
+					var_db = 252;
+				}else if(var_db < 0){
+					continue;
+				}
+				for(var_db; var_db >= 0; var_db--){
+					if(var_up == 2){
+						seikaku = 1;
+					}else if(var_dw == 2){
+						seikaku = -1;
+					}else{
+						seikaku = 0;
+					}
+					var_nb = ncalc3(2, var_db, seikaku);
+					
+					//D努力値
+					var_dd = d_max - var_dh - var_db - var_da - var_dc - var_ds;
+					if(var_dd < 0){
+						continue;
+					}
+					for(var_dd; var_dd >= 0; var_dd--){
+						if(var_up == 4){
+							seikaku = 1;
+						}else if(var_dw == 4){
+							seikaku = -1;
+						}else{
+							seikaku = 0;
+						}
+						var_nd = ncalc3(4, var_dd, seikaku);
+						
+						var_sisu_hb = var_nh * var_nb;
+						var_sisu_hd = var_nh * var_nd;
+						var_sisu_hbd = var_nh * var_nb * var_nd / (var_nb + var_nd);
+						x_dsum = var_dh + var_db + var_dd + var_da + var_dc + var_ds;
+						
+						if((var_sisu_hb >= now_sisu_hb)&&(var_sisu_hd >= now_sisu_hd)){//入力値の物理・特殊耐久確保
+							if(x_dsum < d_max){//努力値合計が少ないとき
+								fin_sisu_hbd = var_sisu_hbd; x_sisu_hbd = var_sisu_hbd;
+								fin_nh = var_nh;
+								fin_nb = var_nb;
+								fin_nd = var_nd;
+								fin_up = var_up; fin_dw = var_dw;
+								d_max = x_dsum;
+								continue;
+							}
+							if((x_dsum == d_max)&&(fin_sisu_hbd <= var_sisu_hbd)){//同じ努力値合計で指数があがる時//ACSがあがるときも計算
+								if(x_sisu_hbd <= var_sisu_hbd){
+									if((var_na > now_na)||(var_nc > now_nc)||(var_ns > now_ns)||(x_sisu_hbd < var_sisu_hbd)){
+									x_sisu_hbd = var_sisu_hbd;
+									x_nh = var_nh; x_na = var_na;
+									x_nb = var_nb; x_nc = var_nc;
+									x_nd = var_nd; x_ns = var_ns;
+									x_up = var_up; x_dw = var_dw;
+									d2_max = d_max;
+									}
+								}
+							}
+								
+							
+						}else{
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	if(d2_max == d_max){
+		fin_nh = x_nh; fin_na = x_na;
+		fin_nb = x_nb; fin_nc = x_nc;
+		fin_nd = x_nd; fin_ns = x_ns;
+		fin_up = x_up; fin_dw = x_dw;
+	}
+	//性格合わせ
+	for(i=1;i<6;i++){
+		if(i == fin_up){
+			document.nForm.elements[chup[i]].checked = true;
+		}else{
+			document.nForm.elements[chup[i]].checked = false;
+		}
+		
+		if(i == fin_dw){
+			document.nForm.elements[chdw[i]].checked = true;
+		}else{
+			document.nForm.elements[chdw[i]].checked = false;
+		}
+	}
+	//能力値反映
+	document.nForm.elements[nn[0]].value = fin_nh;
+	document.nForm.elements[nn[1]].value = fin_na;
+	document.nForm.elements[nn[2]].value = fin_nb;
+	document.nForm.elements[nn[3]].value = fin_nc;
+	document.nForm.elements[nn[4]].value = fin_nd;
+	document.nForm.elements[nn[5]].value = fin_ns;
+	
+	dcalc(0);dcalc(1);dcalc(2);dcalc(3);dcalc(4);dcalc(5);
 }
 
 //--個体値リセット
