@@ -271,6 +271,11 @@ function mega_button(){
 		if(p=="ギラティナ"){
 			document.nForm.elements['pokename'].value = "ギラティナ (アナザー)";
 		}
+	}else if((p=="シェイミ")||(p=="シェイミ (ランド)")||(p=="シェイミ (スカイ)")){
+		visi(2, "ランド", "スカイ")
+		if(p=="シェイミ"){
+			document.nForm.elements['pokename'].value = "シェイミ (ランド)";
+		}
 	}else if((p=="フーパ")||(p=="フーパ (戒め)")||(p=="フーパ (解放)")){
 		visi(2, "戒め", "解放");
 		if(p=="フーパ"){
@@ -494,6 +499,12 @@ function megachange(num){
  			p="ギラティナ (アナザー)";
  		}else if(parseInt(num)==1){
  			p="ギラティナ (オリジン)";
+ 		}
+ 	}else if((p=="シェイミ")||(p=="シェイミ (ランド)")||(p=="シェイミ (スカイ)")){
+		if(parseInt(num)==0){
+ 			p="シェイミ (ランド)";
+ 		}else if(parseInt(num)==1){
+ 			p="シェイミ (スカイ)";
  		}
 	}else if((p=="フーパ")||(p=="フーパ (戒め)")||(p=="フーパ (解放)")){
 		if(parseInt(num)==0){
