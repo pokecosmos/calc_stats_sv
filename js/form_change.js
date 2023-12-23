@@ -16,6 +16,11 @@ function mega_button(){
 		if(p=="ライチュウ"){
 			document.nForm.elements['pokename'].value = "ライチュウ (通常)";
 		}
+	}else if((p=="ナッシー")||(p=="ナッシー (通常)")||(p=="ナッシー (アローラ)")){
+		visi(2, "通常", "アローラ");
+		if(p=="ナッシー"){
+			document.nForm.elements['pokename'].value = "ナッシー (通常)";
+		}
 	}else if((p=="ディグダ")||(p=="ディグダ (通常)")||(p=="ディグダ (アローラ)")){
 		visi(2, "通常", "アローラ");
 		if(p=="ディグダ"){
@@ -231,10 +236,20 @@ function mega_button(){
 		if(p=="コオリッポ"){
 			document.nForm.elements['pokename'].value = "コオリッポ (アイス)";
 		}
+	}else if((p=="メテノ")||(p=="メテノ (流星)")||(p=="メテノ (コア)")){
+		visi(2, "流星", "コア");
+		if(p=="メテノ"){
+			document.nForm.elements['pokename'].value = "メテノ (流星)";
+		}
 	}else if((p=="イエッサン")||(p=="イエッサン ♂")||(p=="イエッサン ♀")){
 		visi(2, "♂", "♀");
 		if(p=="イエッサン"){
 			document.nForm.elements['pokename'].value = "イエッサン ♀";
+		}
+	}else if((p=="ニャオニクス")||(p=="ニャオニクス ♂")||(p=="ニャオニクス ♀")){
+		visi(2, "♂", "♀");
+		if(p=="ニャオニクス"){
+			document.nForm.elements['pokename'].value = "ニャオニクス ♀";
 		}
 	}else if((p=="パフュートン")||(p=="パフュートン ♂")||(p=="パフュートン ♀")){
 		visi(2, "♂", "♀");
@@ -272,7 +287,7 @@ function mega_button(){
 			document.nForm.elements['pokename'].value = "ギラティナ (アナザー)";
 		}
 	}else if((p=="シェイミ")||(p=="シェイミ (ランド)")||(p=="シェイミ (スカイ)")){
-		visi(2, "ランド", "スカイ")
+		visi(2, "ランド", "スカイ");
 		if(p=="シェイミ"){
 			document.nForm.elements['pokename'].value = "シェイミ (ランド)";
 		}
@@ -300,6 +315,11 @@ function mega_button(){
 		visi(3, "通常", "白馬", "黒馬");
 		if(p=="バドレックス"){
 			document.nForm.elements['pokename'].value = "バドレックス (通常)";
+		}
+	}else if((p=="テラパゴス")||(p=="テラパゴス (通常)")||(p=="テラパゴス (テラスタル)")||(p=="テラパゴス (ステラ)")){
+		visi(3, "通常", "テラスタル", "ステラ");
+		if(p=="テラパゴス"){
+			document.nForm.elements['pokename'].value = "テラパゴス (通常)";
 		}
 	}else{
 		visi(0);
@@ -351,6 +371,7 @@ function megachange(num){
  	//通常orアローラ
  	}else if((p=="ペルシアン")||(p=="ペルシアン (通常)")||(p=="ペルシアン (アローラ)")
  			||(p=="ライチュウ")||(p=="ライチュウ (通常)")||(p=="ライチュウ (アローラ)")
+  			||(p=="ナッシー")||(p=="ナッシー (通常)")||(p=="ナッシー (アローラ)")
  			||(p=="ディグダ")||(p=="ディグダ (通常)")||(p=="ディグダ (アローラ)")
  			||(p=="ダグトリオ")||(p=="ダグトリオ (通常)")||(p=="ダグトリオ (アローラ)")
  			||(p=="ベトベター")||(p=="ベトベター (通常)")||(p=="ベトベター (アローラ)")
@@ -425,6 +446,7 @@ function megachange(num){
  		}
  	//♂♀
 		 }else if((p=="イエッサン")||(p=="イエッサン ♂")||(p=="イエッサン ♀")
+  	 	 	||(p=="ニャオニクス")||(p=="ニャオニクス ♂")||(p=="ニャオニクス ♀")
   	 	 	||(p=="パフュートン")||(p=="パフュートン ♂")||(p=="パフュートン ♀")
   	 	 	||(p=="イダイトウ")||(p=="イダイトウ ♂")||(p=="イダイトウ ♀")
  			){
@@ -470,6 +492,12 @@ function megachange(num){
  		}else if(parseInt(num)==1){
  			p="コオリッポ (ナイス)";
  		}
+ 	}else if((p=="メテノ")||(p=="メテノ (流星)")||(p=="メテノ (コア)")){
+		if(parseInt(num)==0){
+ 			p="メテノ (流星)";
+ 		}else if(parseInt(num)==1){
+ 			p="メテノ (コア)";
+ 		}
  	}else if((p=="イルカマン")||(p=="イルカマン (ナイーブ)")||(p=="イルカマン (マイティ)")){
 		if(parseInt(num)==0){
  			p="イルカマン (ナイーブ)";
@@ -500,7 +528,7 @@ function megachange(num){
  		}else if(parseInt(num)==1){
  			p="ギラティナ (オリジン)";
  		}
- 	}else if((p=="シェイミ")||(p=="シェイミ (ランド)")||(p=="シェイミ (スカイ)")){
+	}else if((p=="シェイミ")||(p=="シェイミ (ランド)")||(p=="シェイミ (スカイ)")){
 		if(parseInt(num)==0){
  			p="シェイミ (ランド)";
  		}else if(parseInt(num)==1){
@@ -537,6 +565,14 @@ function megachange(num){
  			p="バドレックス (白馬)";
  		}else if(parseInt(num)==2){
  			p="バドレックス (黒馬)";
+ 		}
+ 	}else if((p=="テラパゴス")||(p=="テラパゴス (通常)")||(p=="テラパゴス (テラスタル)")||(p=="テラパゴス (ステラ)")){
+		if(parseInt(num)==0){
+ 			p="テラパゴス (通常)";
+ 		}else if(parseInt(num)==1){
+ 			p="テラパゴス (テラスタル)";
+ 		}else if(parseInt(num)==2){
+ 			p="テラパゴス (ステラ)";
  		}
  	}
 	document.nForm.elements['pokename'].value = p;
