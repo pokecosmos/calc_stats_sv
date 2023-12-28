@@ -291,6 +291,16 @@ function mega_button(){
 		if(p=="シェイミ"){
 			document.nForm.elements['pokename'].value = "シェイミ (ランド)";
 		}
+	}else if((p=="キュレム")||(p=="キュレム (通常)")||(p=="ホワイトキュレム")||(p=="ブラックキュレム")){
+		visi(3, "通常", "ホワイト", "ブラック");
+		if(p=="キュレム"){
+			document.nForm.elements['pokename'].value = "キュレム (通常)";
+		}
+	}else if((p=="ネクロズマ")||(p=="ネクロズマ (通常)")||(p=="ネクロズマ (日食)")||(p=="ネクロズマ (月食)")){
+		visi(3, "通常", "日食", "月食");
+		if(p=="ネクロズマ"){
+			document.nForm.elements['pokename'].value = "ネクロズマ (通常)";
+		}
 	}else if((p=="フーパ")||(p=="フーパ (戒め)")||(p=="フーパ (解放)")){
 		visi(2, "戒め", "解放");
 		if(p=="フーパ"){
@@ -539,6 +549,22 @@ function megachange(num){
  			p="フーパ (戒め)";
  		}else if(parseInt(num)==1){
  			p="フーパ (解放)";
+ 		}
+ 	}else if((p=="キュレム")||(p=="キュレム (通常)")||(p=="ホワイトキュレム")||(p=="ブラックキュレム")){
+		if(parseInt(num)==0){
+ 			p="キュレム (通常)";
+ 		}else if(parseInt(num)==1){
+ 			p="ホワイトキュレム";
+ 		}else if(parseInt(num)==2){
+ 			p="ブラックキュレム";
+ 		}
+ 	}else if((p=="ネクロズマ")||(p=="ネクロズマ (通常)")||(p=="ネクロズマ (日食)")||(p=="ネクロズマ (月食)")){
+		if(parseInt(num)==0){
+ 			p="ネクロズマ (通常)";
+ 		}else if(parseInt(num)==1){
+ 			p="ネクロズマ (日食)";
+ 		}else if(parseInt(num)==2){
+ 			p="ネクロズマ (月食)";
  		}
 	}else if((p=="メロエッタ")||(p=="メロエッタ (ボイス)")||(p=="メロエッタ (ステップ)")){
 		if(parseInt(num)==0){
