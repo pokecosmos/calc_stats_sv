@@ -30,9 +30,18 @@ ryaku = new Array("H","A","B","C","D","S");
 chup = new Array("","ch1","ch2","ch3","ch4","ch5");
 chdw = new Array("","ch7","ch8","ch9","ch10","ch11");
 nn = new Array("n0","n1","n2","n3","n4","n5");
+nnup = new Array("nup0","nup1","nup2","nup3","nup4","nup5");
+nndw = new Array("ndw0","ndw1","ndw2","ndw3","ndw4","ndw5");
 sn = new Array("s0","s1","s2","s3","s4","s5","s6");
 dn = new Array("d0","d1","d2","d3","d4","d5","d6");
+dnup = new Array("dup0","dup1","dup2","dup3","dup4","dup5","dup6");
+dndw = new Array("ddw0","ddw1","ddw2","ddw3","ddw4","ddw5","ddw6");
+dnmin = new Array("dmin0","dmin1","dmin2","dmin3","dmin4","dmin5","dmin6");
+dnmax = new Array("dmax0","dmax1","dmax2","dmax3","dmax4","dmax5","dmax6");
 kn = new Array("k0","k1","k2","k3","k4","k5");
+knx = new Array("kx0","kx1","kx2","kx3","kx4","kx5");
+knmin = new Array("kmin0","kmin1","kmin2","kmin3","kmin4","kmin5");
+knmax = new Array("kmax0","kmax1","kmax2","kmax3","kmax4","kmax5");
 var nnn = 175;
  -->
 </script>
@@ -52,8 +61,8 @@ var nnn = 175;
 </td></tr>
 <tr><td></td><td width="80"> Lv. <input type="number" name="L0" value="50" min="1" max="100" step="1"  onclick="ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5)" onblur="ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5)"></td>
 <td  width="80">
-<input type="button" class="button" value ="50" onclick="setvalue('L0', 50);ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5)">
-<input type="button" class="button" value ="100" onclick="setvalue('L0', 100);ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5)">
+<input type="button" class="button" name="L1" value ="50" onclick="setvalue('L0', 50);ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5)">
+<input type="button" class="button" name="L2" value ="100" onclick="setvalue('L0', 100);ncalc(0);ncalc(1);ncalc(2);ncalc(3);ncalc(4);ncalc(5)">
 </td></tr></table>
 <table border="0">
 <tr><td></td><td>能力値</td><td colspan="2">努力値</td><td>種族値</td><td colspan="2">個体値</td><td colspan="2"  align="center">性格</td></tr>
@@ -68,18 +77,18 @@ for(i=0; i<6; i++){
 		document.write('120');
 	}
 	document.write('" min="1" max="999" step="1" onclick="dcalc('+ i +')" onblur="dcalc('+ i +')">',
-	'<input type="button" class="updown" value ="▲" onclick="nchange('+ i +',0);dcalc('+ i +')" >',
-	'<input type="button" class="updown" value ="▼" onclick="nchange('+ i +',1);dcalc('+ i +')"></td><td>',
+	'<input type="button" name = "' +nnup[i] + '" class="updown" value ="▲" onclick="nchange('+ i +',0);dcalc('+ i +')" >',
+	'<input type="button" name = "' +nndw[i] + '" class="updown" value ="▼" onclick="nchange('+ i +',1);dcalc('+ i +')"></td><td>',
 	'<input type="number" name = "' +dn[i] + '" value="0" min="0" max="252" step="4" onclick="ncalc('+ i +');dsum()" onblur="ncalc('+ i +');dsum()">',
-	'<input type="button" class="updown" value ="▲" onclick="dchange('+ i +',0);ncalc('+ i +');dsum()">',
-	'<input type="button" class="updown" value ="▼" onclick="dchange('+ i +',1);ncalc('+ i +');dsum()"></td><td>',
-	'<input type="button" class="button" value ="0" onclick="setvalue(dn['+i+'],0); ncalc('+ i +'); dsum()">',
-	'<input type="button" class="button" value ="252" onclick="setvalue(dn['+i+'],252); ncalc('+ i +'); dsum()"></td><td>',
+	'<input type="button" name = "' +dnup[i] + '" class="updown" value ="▲" onclick="dchange('+ i +',0);ncalc('+ i +');dsum()">',
+	'<input type="button" name = "' +dndw[i] + '" class="updown" value ="▼" onclick="dchange('+ i +',1);ncalc('+ i +');dsum()"></td><td>',
+	'<input type="button" name = "' +dnmin[i] + '" class="button" value ="0" onclick="setvalue(dn['+i+'],0); ncalc('+ i +'); dsum()">',
+	'<input type="button" name = "' +dnmax[i] + '" class="button" value ="252" onclick="setvalue(dn['+i+'],252); ncalc('+ i +'); dsum()"></td><td>',
 	'<input type="number" name = "' + sn[i] + '" value="100" min="1" max="999" step="1" onclick="ssum();ncalc('+ i +')" onblur="ssum();ncalc('+ i +')"></td><td>',
 	'<input type="number" name = "' + kn[i] + '" value="31" min="0" max="31" step="1"  onclick="ncalc('+ i +')" onblur="ncalc('+ i +')"></td><td>',
-	'<input type="button" class="button pc" value ="×" onclick="setvalue(kn['+i+'] ,-1); ncalc('+ i +')">',//---------×ボタン
-	'<input type="button" class="button" value ="0" onclick="setvalue(kn['+i+'] ,0); ncalc('+ i +')">',//-----------0ボタン
-	'<input type="button" class="button" value ="31" onclick="setvalue(kn['+i+'] ,31); ncalc('+ i +')"></td>');//---31ボタン
+	'<input type="button" name = "' + knx[i] + '" class="button pc" value ="×" onclick="setvalue(kn['+i+'] ,-1); ncalc('+ i +')">',//---------×ボタン
+	'<input type="button" name = "' + knmin[i] + '" class="button" value ="0" onclick="setvalue(kn['+i+'] ,0); ncalc('+ i +')">',//-----------0ボタン
+	'<input type="button" name = "' + knmax[i] + '" class="button" value ="31" onclick="setvalue(kn['+i+'] ,31); ncalc('+ i +')"></td>');//---31ボタン
 	if(i==0){
 		document.write('<td bgcolor="#FF97C2" align="center">＋</td><td bgcolor="#8EB8FF" align="center">－');
 	}else{
@@ -93,7 +102,7 @@ for(i=0; i<6; i++){
 document.close();
 // --></script>
 <tr><td></td><td align="right">残り</td>
-<td><input type="number" name = "d6" value="510" readonly><input type="button" class="ALL0" value="ALL0" onclick="dreset()"></td>
+<td><input type="number" name = "d6" value="510" readonly><input type="button" class="ALL0" name="ALL0" value="ALL0" onclick="dreset()"></td>
 <td  align="right">合計</td><td><input type="number" name = "s6" value="600" readonly></td>
 <td colspan="3" align="center"><input type="button" class="taikyu" name="taikyu" value="耐久振り" onclick="taikyu_tyosei()">
 <input type="button" class="taikyu2" name="taikyu2" value="調整チェック" onclick="tyosei_check()"></td></tr></table>
@@ -145,9 +154,9 @@ document.close();
 
 <br/>
 <hr/>
-<textarea placeholder="？？？　まじめ 175-120-120-120-120-120" rows="4" class="hyoji" id="target" value="" class="textarea"></textarea>
+<textarea placeholder="？？？　まじめ 175-120-120-120-120-120" rows="4" class="hyoji" id="target" value="" class="textarea" name = "tyouseinaiyou"></textarea>
 <!--ツイートボタン-->
-<p><input type="button" id="twitter_button" value="調整内容をツイート" class="tweetbtn" onclick="getTweet()"></p>
+<p><input type="button" id="twitter_button" value="調整内容をツイート" class="tweetbtn" name = "tweetbtn" onclick="getTweet()"></p>
 <hr/>
 </form>
 <div class="class3">

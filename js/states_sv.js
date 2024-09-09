@@ -857,4 +857,433 @@ function get_tyousei(){
 	}
 	text += " (" + text3 + ") [" + text2 + "]";
 	return(text);
+	
+	
+}
+
+//---------------------------------------
+//キーボード操作用
+//-----------------------------------------------
+document.addEventListener('keydown', function(event) {
+    //if (event.key === 'Enter') {
+    if (event.key === ']') {
+    	event.preventDefault();
+        Keydown1();
+    }else if (event.key === '[') {
+    	event.preventDefault();
+        Keydown2();
+    }else if (event.key === '^') {
+    	event.preventDefault();
+        Keydown3();
+    }else if (event.key === '\\') {
+    	event.preventDefault();
+        Keydown4();
+    }else if (event.key === 'Enter') {
+    	Keydown5();
+        
+    }
+});
+
+//下にフォーカス移動-------------------------------------------------
+function Keydown1() {
+    const targetElement = document.nForm.elements;
+    
+    for(let i=0; i<5; i++){
+		if (document.activeElement === targetElement[nn[i]]) {
+		    document.nForm.elements[nn[i+1]].focus(); return;
+		}else if(document.activeElement === targetElement[nnup[i]]) {
+        	document.nForm.elements[nnup[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[nndw[i]]) {
+        	document.nForm.elements[nndw[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[dn[i]]) {
+        	document.nForm.elements[dn[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnup[i]]) {
+        	document.nForm.elements[dnup[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[dndw[i]]) {
+        	document.nForm.elements[dndw[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmin[i]]) {
+        	document.nForm.elements[dnmin[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmax[i]]) {
+        	document.nForm.elements[dnmax[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[sn[i]]) {
+        	document.nForm.elements[sn[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[kn[i]]) {
+        	document.nForm.elements[kn[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[knx[i]]) {
+        	document.nForm.elements[knx[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmin[i]]) {
+        	document.nForm.elements[knmin[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmax[i]]) {
+        	document.nForm.elements[knmax[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[chup[i]]) {
+        	document.nForm.elements[chup[i+1]].focus(); return;
+    	}else if(document.activeElement === targetElement[chdw[i]]) {
+        	document.nForm.elements[chdw[i+1]].focus(); return;
+    	}
+    }
+    if (document.activeElement === targetElement['pokename']) {
+        document.nForm.elements['L0'].focus();
+    }else if (document.activeElement === targetElement['L0']) {
+        document.nForm.elements[nn[0]].focus();
+    }else if (document.activeElement === targetElement[nn[5]]) {
+        document.nForm.elements['s_result'].focus();
+    }else if (document.activeElement === targetElement['s_result']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement['tyouseinaiyou']) {
+        document.nForm.elements['tweetbtn'].focus();
+    }else if (document.activeElement === targetElement[dn[5]]) {
+    	document.nForm.elements[dn[6]].focus();
+    }else if (document.activeElement === targetElement[dnup[5]]) {
+    	document.nForm.elements['ALL0'].focus();
+    }else if (document.activeElement === targetElement[dndw[5]]) {
+    	document.nForm.elements['ALL0'].focus();
+    }else if (document.activeElement === targetElement[sn[5]]) {
+    	document.nForm.elements[sn[6]].focus();
+    }else if (document.activeElement === targetElement[kn[5]]) {
+    	document.nForm.elements['taikyu'].focus();
+    }else if (document.activeElement === targetElement[knx[5]]) {
+    	document.nForm.elements['taikyu2'].focus();
+    }else if (document.activeElement === targetElement[knmin[5]]) {
+    	document.nForm.elements['taikyu2'].focus();
+    }else if (document.activeElement === targetElement[knmax[5]]) {
+    	document.nForm.elements['taikyu2'].focus();
+    }else if (document.activeElement === targetElement['rank']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement['skill']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement['sitem']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement['ch_m']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement['ch_o']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement[dn[6]]) {
+        document.nForm.elements['s_result'].focus();
+    }else if (document.activeElement === targetElement['ALL0']) {
+        document.nForm.elements['s_result'].focus();
+    
+    }else if (document.activeElement === targetElement['mega0']) {
+        document.nForm.elements[dnup[0]].focus();
+    }else if (document.activeElement === targetElement['mega1']) {
+        document.nForm.elements[sn[0]].focus();
+    }else if (document.activeElement === targetElement['mega2']) {
+        document.nForm.elements[knx[0]].focus();
+    }else if (document.activeElement === targetElement['mega3']) {
+        document.nForm.elements[knmax[0]].focus();
+        
+    //何もしない
+    }else if (document.activeElement === targetElement['tweetbtn']) {
+    }else if (document.activeElement === targetElement[nnup[5]]) {
+    }else if (document.activeElement === targetElement[nndw[5]]) {
+    }else if (document.activeElement === targetElement[dnmin[5]]) {
+    }else if (document.activeElement === targetElement[dnmax[5]]) {
+    }else if (document.activeElement === targetElement[sn[6]]) {
+    }else if (document.activeElement === targetElement['taikyu']) {
+    }else if (document.activeElement === targetElement['taikyu2']) {
+    }else if (document.activeElement === targetElement[chup[5]]) {
+    }else if (document.activeElement === targetElement[chdw[5]]) {
+    } else {
+        document.nForm.elements[nn[0]].focus();
+    }
+}
+
+//上にフォーカス移動-----------------------------------------------
+function Keydown2() {
+    const targetElement = document.nForm.elements;
+    
+    for(let i=0; i<5; i++){
+		if (document.activeElement === targetElement[nn[i+1]]) {
+		    document.nForm.elements[nn[i]].focus(); return;
+		}else if(document.activeElement === targetElement[nnup[i+1]]) {
+        	document.nForm.elements[nnup[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[nndw[i+1]]) {
+        	document.nForm.elements[nndw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dn[i+1]]) {
+        	document.nForm.elements[dn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnup[i+1]]) {
+        	document.nForm.elements[dnup[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dndw[i+1]]) {
+        	document.nForm.elements[dndw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmin[i+1]]) {
+        	document.nForm.elements[dnmin[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmax[i+1]]) {
+        	document.nForm.elements[dnmax[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[sn[i+1]]) {
+        	document.nForm.elements[sn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[kn[i+1]]) {
+        	document.nForm.elements[kn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knx[i+1]]) {
+        	document.nForm.elements[knx[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmin[i+1]]) {
+        	document.nForm.elements[knmin[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmax[i+1]]) {
+        	document.nForm.elements[knmax[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[chup[i+1]]) {
+        	document.nForm.elements[chup[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[chdw[i+1]]) {
+        	document.nForm.elements[chdw[i]].focus(); return;
+    	}
+    }
+    
+    if (document.activeElement === targetElement['L0']) {
+        document.nForm.elements['pokename'].focus();
+    }else if (document.activeElement === targetElement['L1']) {
+        document.nForm.elements['pokename'].focus();
+    }else if (document.activeElement === targetElement['L2']) {
+        document.nForm.elements['pokename'].focus();
+    }else if (document.activeElement === targetElement[nn[0]]) {
+        document.nForm.elements['L0'].focus();
+    }else if (document.activeElement === targetElement['tweetbtn']) {
+        document.nForm.elements['tyouseinaiyou'].focus();
+    }else if (document.activeElement === targetElement['tyouseinaiyou']) {
+        document.nForm.elements['s_result'].focus();
+    }else if (document.activeElement === targetElement['s_result']) {
+        document.nForm.elements[nn[5]].focus();
+    }else if (document.activeElement === targetElement[dn[6]]) {
+        document.nForm.elements[dn[5]].focus();
+    }else if (document.activeElement === targetElement['ALL0']) {
+        document.nForm.elements[dnup[5]].focus();
+    }else if (document.activeElement === targetElement[sn[6]]) {
+        document.nForm.elements[sn[5]].focus();
+    }else if (document.activeElement === targetElement['taikyu']) {
+        document.nForm.elements[kn[5]].focus();
+    }else if (document.activeElement === targetElement['taikyu2']) {
+        document.nForm.elements[knmin[5]].focus();
+    
+    }else if (document.activeElement === targetElement['rank']) {
+        document.nForm.elements[nn[5]].focus();
+    }else if (document.activeElement === targetElement['skill']) {
+        document.nForm.elements[nn[5]].focus();
+    }else if (document.activeElement === targetElement['sitem']) {
+        document.nForm.elements[nn[5]].focus();
+    }else if (document.activeElement === targetElement['ch_m']) {
+        document.nForm.elements[nn[5]].focus();
+    }else if (document.activeElement === targetElement['ch_o']) {
+        document.nForm.elements[nn[5]].focus();
+    }else if (document.activeElement === targetElement[nnup[0]]) {
+        document.nForm.elements['L0'].focus();
+    }else if (document.activeElement === targetElement[nndw[0]]) {
+        document.nForm.elements['L0'].focus();
+    }else if (document.activeElement === targetElement[dn[0]]) {
+        document.nForm.elements['pokename'].focus();
+        
+    }else if (document.activeElement === targetElement[dnup[0]]) {
+        document.nForm.elements['mega0'].focus();
+    }else if (document.activeElement === targetElement[dndw[0]]) {
+        document.nForm.elements['mega0'].focus();
+    }else if (document.activeElement === targetElement[dnmin[0]]) {
+        document.nForm.elements['mega0'].focus();
+    }else if (document.activeElement === targetElement[dnmax[0]]) {
+        document.nForm.elements['mega0'].focus();
+    }else if (document.activeElement === targetElement[sn[0]]) {
+        document.nForm.elements['mega1'].focus();
+    }else if (document.activeElement === targetElement[kn[0]]) {
+        document.nForm.elements['mega1'].focus();
+    }else if (document.activeElement === targetElement[knx[0]]) {
+        document.nForm.elements['mega2'].focus();
+    }else if (document.activeElement === targetElement[kmin[0]]) {
+        document.nForm.elements['mega2'].focus();
+    }else if (document.activeElement === targetElement[kmax[0]]) {
+        document.nForm.elements['mega2'].focus();
+        
+    //何もしない
+    }else if (document.activeElement === targetElement['pokename']) {
+    }else if (document.activeElement === targetElement[chup[1]]) {
+    }else if (document.activeElement === targetElement[chdw[1]]) {
+    
+    } else {
+        document.nForm.elements[nn[0]].focus();
+    }
+    
+}
+
+//左にフォーカス移動
+function Keydown3() {
+    const targetElement = document.nForm.elements;
+    
+    for(let i=0; i<6; i++){
+		if (document.activeElement === targetElement[nn[i]]) {
+			if(i==0){document.nForm.elements[knmax[i]].focus(); return;
+    		}else{document.nForm.elements[chdw[i]].focus(); return;}
+		}else if(document.activeElement === targetElement[nnup[i]]) {
+			document.nForm.elements[nn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[nndw[i]]) {
+    	    document.nForm.elements[nnup[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dn[i]]) {
+    		document.nForm.elements[nndw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnup[i]]) {
+    		document.nForm.elements[dn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dndw[i]]) {
+    		document.nForm.elements[dnup[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmin[i]]) {
+    		document.nForm.elements[dndw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmax[i]]) {
+    		document.nForm.elements[dnmin[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[sn[i]]) {
+    		document.nForm.elements[dnmax[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[kn[i]]) {
+    		document.nForm.elements[sn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knx[i]]) {
+    		document.nForm.elements[kn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmin[i]]) {
+    		document.nForm.elements[knx[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmax[i]]) {
+    		document.nForm.elements[knmin[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[chup[i]]) {
+        	document.nForm.elements[knmax[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[chdw[i]]) {
+        	document.nForm.elements[chup[i]].focus(); return;
+    	}
+    }
+    if (document.activeElement === targetElement['mega0']) {
+        document.nForm.elements['pokename'].focus();
+    }else if (document.activeElement === targetElement['mega1']) {
+        document.nForm.elements['mega0'].focus();
+    }else if (document.activeElement === targetElement['mega2']) {
+        document.nForm.elements['mega1'].focus();
+    }else if (document.activeElement === targetElement['mega3']) {
+        document.nForm.elements['mega2'].focus();
+    }else if (document.activeElement === targetElement['L0']) {
+        document.nForm.elements['L2'].focus();
+    }else if (document.activeElement === targetElement['L1']) {
+        document.nForm.elements['L0'].focus();
+    }else if (document.activeElement === targetElement['L2']) {
+        document.nForm.elements['L1'].focus();
+    }else if (document.activeElement === targetElement[dn[6]]) {
+        document.nForm.elements['taikyu2'].focus();
+    }else if (document.activeElement === targetElement['ALL0']) {
+        document.nForm.elements[dn[6]].focus();
+    }else if (document.activeElement === targetElement[sn[6]]) {
+        document.nForm.elements['ALL0'].focus();
+    }else if (document.activeElement === targetElement['taikyu']) {
+        document.nForm.elements[sn[6]].focus();
+    }else if (document.activeElement === targetElement['taikyu2']) {
+        document.nForm.elements['taikyu'].focus();
+    }else if (document.activeElement === targetElement['s_result']) {
+        document.nForm.elements['ch_o'].focus();
+    }else if (document.activeElement === targetElement['rank']) {
+        document.nForm.elements['s_result'].focus();
+    }else if (document.activeElement === targetElement['skill']) {
+        document.nForm.elements['rank'].focus();
+    }else if (document.activeElement === targetElement['sitem']) {
+        document.nForm.elements['skill'].focus();
+    }else if (document.activeElement === targetElement['ch_m']) {
+        document.nForm.elements['sitem'].focus();
+    }else if (document.activeElement === targetElement['ch_o']) {
+        document.nForm.elements['ch_m'].focus();
+    //何もしない
+    }else if (document.activeElement === targetElement['pokename']) {
+    
+    } else {
+        document.nForm.elements[nn[0]].focus();
+    }
+}
+
+//右にフォーカス移動
+function Keydown4() {
+    const targetElement = document.nForm.elements;
+    
+    for(let i=0; i<6; i++){
+		if (document.activeElement === targetElement[nn[i]]) {
+		    document.nForm.elements[nnup[i]].focus(); return;
+		}else if(document.activeElement === targetElement[nnup[i]]) {
+        	document.nForm.elements[nndw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[nndw[i]]) {
+        	document.nForm.elements[dn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dn[i]]) {
+        	document.nForm.elements[dnup[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnup[i]]) {
+        	document.nForm.elements[dndw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dndw[i]]) {
+        	document.nForm.elements[dnmin[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmin[i]]) {
+        	document.nForm.elements[dnmax[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[dnmax[i]]) {
+        	document.nForm.elements[sn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[sn[i]]) {
+        	document.nForm.elements[kn[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[kn[i]]) {
+        	document.nForm.elements[knx[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knx[i]]) {
+        	document.nForm.elements[knmin[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmin[i]]) {
+        	document.nForm.elements[knmax[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[knmax[i]]) {
+    		if(i==0){document.nForm.elements[nn[i]].focus(); return;
+    		}else{document.nForm.elements[chup[i]].focus(); return;}
+    	}else if(document.activeElement === targetElement[chup[i]]) {
+        	document.nForm.elements[chdw[i]].focus(); return;
+    	}else if(document.activeElement === targetElement[chdw[i]]) {
+        	document.nForm.elements[nn[i]].focus(); return;
+    	}
+    }
+    
+    if (document.activeElement === targetElement['pokename']) {
+        document.nForm.elements['mega0'].focus();
+    }else if (document.activeElement === targetElement['mega0']) {
+        document.nForm.elements['mega1'].focus();
+    }else if (document.activeElement === targetElement['mega1']) {
+        document.nForm.elements['mega2'].focus();
+    }else if (document.activeElement === targetElement['mega2']) {
+        document.nForm.elements['mega3'].focus();
+    }else if (document.activeElement === targetElement['L0']) {
+        document.nForm.elements['L1'].focus();
+    }else if (document.activeElement === targetElement['L1']) {
+        document.nForm.elements['L2'].focus();
+    }else if (document.activeElement === targetElement['L2']) {
+        document.nForm.elements['L0'].focus();
+    }else if (document.activeElement === targetElement[dn[6]]) {
+        document.nForm.elements['ALL0'].focus();
+    }else if (document.activeElement === targetElement['ALL0']) {
+        document.nForm.elements[sn[6]].focus();
+    }else if (document.activeElement === targetElement[sn[6]]) {
+        document.nForm.elements['taikyu'].focus();
+    }else if (document.activeElement === targetElement['taikyu']) {
+        document.nForm.elements['taikyu2'].focus();
+    }else if (document.activeElement === targetElement['taikyu2']) {
+        document.nForm.elements[dn[6]].focus();
+    
+    }else if (document.activeElement === targetElement['s_result']) {
+        document.nForm.elements['rank'].focus();
+    }else if (document.activeElement === targetElement['rank']) {
+        document.nForm.elements['skill'].focus();
+    }else if (document.activeElement === targetElement['skill']) {
+        document.nForm.elements['sitem'].focus();
+    }else if (document.activeElement === targetElement['sitem']) {
+        document.nForm.elements['ch_m'].focus();
+    }else if (document.activeElement === targetElement['ch_m']) {
+        document.nForm.elements['ch_o'].focus();
+    }else if (document.activeElement === targetElement['ch_o']) {
+        document.nForm.elements['s_result'].focus();
+        
+    //何もしない
+    }else if (document.activeElement === targetElement['mega3']) {
+    
+    } else {
+        document.nForm.elements[nn[0]].focus();
+    }
+}
+
+//Enterキーのイベント
+function Keydown5() {
+    const targetElement = document.nForm.elements;
+	let activeElement = document.activeElement;
+        if (activeElement.type === 'checkbox') {
+            activeElement.checked = !activeElement.checked;
+            
+            for(i=1;i<6;i++){
+            	if(document.activeElement.getAttribute("name") == chup[i]){
+            		unchk1(i);
+            	}else if(document.activeElement.getAttribute("name") == chdw[i]){
+            		unchk2(i);
+            	}
+            	
+            }
+            if(document.activeElement.getAttribute("name") == "ch_o"){
+            	scalc();
+            }else if(document.activeElement.getAttribute("name") == "ch_m"){
+            	scalc();
+            }
+            
+        }
 }
