@@ -865,22 +865,24 @@ function get_tyousei(){
 //キーボード操作用
 //-----------------------------------------------
 document.addEventListener('keydown', function(event) {
-    //if (event.key === 'Enter') {
-    if (event.key === ']') {
+    if (event.key === 's') {
     	event.preventDefault();
         Keydown1();
-    }else if (event.key === '[') {
+    }else if (event.key === 'w') {
     	event.preventDefault();
         Keydown2();
-    }else if (event.key === '^') {
+    }else if (event.key === 'a') {
     	event.preventDefault();
         Keydown3();
-    }else if (event.key === '\\') {
+    }else if (event.key === 'd') {
     	event.preventDefault();
         Keydown4();
     }else if (event.key === 'Enter') {
     	Keydown5();
-        
+    }else if (event.key === 'r') {
+    	Keydown6();
+    }else if (event.key === 'f') {
+    	Keydown7();
     }
 });
 
@@ -1286,4 +1288,76 @@ function Keydown5() {
             }
             
         }
+}
+
+//rキーのイベント　数値増
+function Keydown6() {
+    const targetElement = document.nForm.elements;
+    for(i=0; i<6;i++){
+    	if (document.activeElement === targetElement[nn[i]]) {
+    		nchange(i,0);dcalc(i);return;
+    	}else if (document.activeElement === targetElement[nnup[i]]) {
+    		nchange(i,0);dcalc(i);return;
+    	}else if (document.activeElement === targetElement[nndw[i]]) {
+    		nchange(i,0);dcalc(i);return;
+    	}else if (document.activeElement === targetElement[dn[i]]) {
+    		dchange(i,0);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dnup[i]]) {
+    		dchange(i,0);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dndw[i]]) {
+    		dchange(i,0);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dnmin[i]]) {
+    		dchange(i,0);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dnmax[i]]) {
+    		dchange(i,0);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[sn[i]]) {
+    		targetElement[sn[i]].value++;ssun();ncalc(i);return;
+    	}else if (document.activeElement === targetElement[kn[i]]) {
+    		if(targetElement[kn[i]].value <= 30){targetElement[kn[i]].value++;ncalc(i);return;}
+    	}else if (document.activeElement === targetElement[knx[i]]) {
+    		if(targetElement[kn[i]].value <= 30){targetElement[kn[i]].value++;ncalc(i);return;}
+    	}else if (document.activeElement === targetElement[knmin[i]]) {
+    		if(targetElement[kn[i]].value <= 30){targetElement[kn[i]].value++;ncalc(i);return;}
+    	}else if (document.activeElement === targetElement[knmax[i]]) {
+    		if(targetElement[kn[i]].value <= 30){targetElement[kn[i]].value++;ncalc(i);return;}
+    	}
+    	
+    	
+    	//ssum();ncalc('+ i +')
+    	//ncalc('+ i +')
+    }
+}
+
+//ｆキーのイベント　数値減
+function Keydown7() {
+    const targetElement = document.nForm.elements;
+    for(i=0; i<6;i++){
+    	if (document.activeElement === targetElement[nn[i]]) {
+    		nchange(i,1);dcalc(i);return;
+    	}else if (document.activeElement === targetElement[nnup[i]]) {
+    		nchange(i,1);dcalc(i);return;
+    	}else if (document.activeElement === targetElement[nndw[i]]) {
+    		nchange(i,1);dcalc(i);return;
+    	}else if (document.activeElement === targetElement[dn[i]]) {
+    		dchange(i,1);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dnup[i]]) {
+    		dchange(i,1);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dndw[i]]) {
+    		dchange(i,1);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dnmin[i]]) {
+    		dchange(i,1);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[dnmax[i]]) {
+    		dchange(i,1);ncalc(i);dsun();return;
+    	}else if (document.activeElement === targetElement[sn[i]]) {
+    		targetElement[sn[i]].value--;ssun();ncalc(i);return;
+    	}else if (document.activeElement === targetElement[kn[i]]) {
+    		if(targetElement[kn[i]].value >= 1){targetElement[kn[i]].value--;ncalc(i);return;}
+    	}else if (document.activeElement === targetElement[knx[i]]) {
+    		if(targetElement[kn[i]].value >= 1){targetElement[kn[i]].value--;ncalc(i);return;}
+    	}else if (document.activeElement === targetElement[knmin[i]]) {
+    		if(targetElement[kn[i]].value >= 1){targetElement[kn[i]].value--;ncalc(i);return;}
+    	}else if (document.activeElement === targetElement[knmax[i]]) {
+    		if(targetElement[kn[i]].value >= 1){targetElement[kn[i]].value--;ncalc(i);return;}
+    	}
+    }
 }
