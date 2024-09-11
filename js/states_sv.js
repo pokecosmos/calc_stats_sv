@@ -1519,17 +1519,15 @@ function readurl(){
 	let amari = firstPart % 6;
 	for(i=1;i<6;i++){
 		if(i == syou){
-			targetElement[chup[i]].checked = true
+			targetElement[chup[i]].checked = true;
 		}
 	}
 	for(i=1;i<6;i++){
 		if(i == amari){
-			targetElement[chdw[i]].checked = true
+			targetElement[chdw[i]].checked = true;
 		}
 	}
 	
 	//種族値代入
 	setpokemon();
 }
-
-	
