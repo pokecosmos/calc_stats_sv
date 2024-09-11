@@ -738,14 +738,6 @@ function titlechange(){
 }
 
 
-function getTweet() {
-//ツイート内容をセット
-var text = get_tyousei();
-text = encodeURIComponent(text);
-var url = "https://pokecosmos.github.io/calc_stats_sv/";
-window.open().location.href = ("https://twitter.com/share?url="+ url +"&text="+ text + "&count=none&lang=ja");
-}
-
 function get_tyousei(){
 	var text = document.nForm.elements['pokename'].value;
 	var text2 = "";//実数値
@@ -1361,3 +1353,184 @@ function Keydown7() {
     	}
     }
 }
+
+
+function getTweet() {
+    // ツイート内容をセット
+    var text = get_tyousei();
+    text = encodeURIComponent(text);
+    var url = "https://pokecosmos.github.io/calc_stats_sv/";
+    var additionalURL = "#"; // ここにURL末尾に追加したい文字列を設定
+	additionalURL += makeurl();
+	
+	
+	
+    url = url + additionalURL; // URL末尾に任意の文字列を追加
+    var tweetText = text; // ツイート内容を設定
+    var tweetUrl = "https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + tweetText + "&count=none&lang=ja";
+    window.open(tweetUrl, '_blank');
+}
+
+function makeurl(){
+	const targetElement = document.nForm.elements;
+	let num = "";
+	let output = "";
+	
+	//ポケモンの図鑑番号＋フォルム番号
+	for(i=0; i<pokemon.length; i++){
+		if(pokemon[i][0]==document.nForm.elements['pokename'].value){
+			num = pokemon[i][8];
+			if(num == ""){
+				num=0;
+			}if(!isNaN(num)){
+				num = parseInt(num, 10);
+			}
+			break;
+		}
+	}
+	output = toBase36_3(num);
+	
+	//ポケモンの努力値
+	for(i=0;i<6;i++){
+		num = targetElement[dn[i]].value;
+		if(num == ""){
+			num=0;
+		}if(!isNaN(num)){
+			num = parseInt(num, 10);
+		}
+		output += toBase36_2(num);
+	}
+	
+	//ポケモンの個体値
+	for(i=0;i<6;i++){
+		num = targetElement[kn[i]].value;
+		if(num == ""){
+			num=0;
+		}if(!isNaN(num)){
+			num = parseInt(num, 10);
+		}
+		
+		output += num.toString(36);
+	}
+	
+	//ポケモンの性格値
+	num=0;
+	for(i=1;i<6;i++){
+		if(targetElement[chup[i]].checked === true){
+			num += i*6;
+		}
+	}
+	for(i=1;i<6;i++){
+		if(targetElement[chdw[i]].checked === true){
+			num += i;
+		}
+	}
+	output += num.toString(36);
+	
+	return output;
+}
+
+	
+	
+//---3桁の36進数に変換する
+function toBase36_3(num) {
+    // 36進数に変換
+    let base36 = num.toString(36);
+    // 3桁になるように0で埋める
+    while (base36.length < 3) {
+        base36 = '0' + base36;
+    }
+    return base36;
+}
+
+//---2桁の36進数に変換する
+function toBase36_2(num) {
+    // 36進数に変換
+    let base36 = num.toString(36);
+    // 3桁になるように0で埋める
+    while (base36.length < 2) {
+        base36 = '0' + base36;
+    }
+    return base36;
+}
+
+//----36進数を10進数に戻す
+function fromBase36(base36Str) {
+    // 36進数の文字列を10進数に変換
+    return parseInt(base36Str, 36);
+}
+	
+	
+	
+	
+	
+//ページを開いたときに起動する
+window.addEventListener('load', function() {
+    // 関数を一度だけ実行する
+    readurl();
+}, { once: true });
+	
+//URLを解読する
+function readurl(){
+	//URLの後ろの部分を取り出す
+	let currentURL = window.location.href;
+	if(currentURL.length !== 66){
+		return;
+	}
+	const targetElement = document.nForm.elements;
+	let baseURL = "https://pokecosmos.github.io/calc_stats_sv/#";
+	let text = currentURL.replace(baseURL, "");
+	let num;
+	let firstPart;
+	
+	//ポケモン名の判定
+	num = 3; // 文字数を指定
+	firstPart = text.substring(0, num);
+	text = text.substring(num);
+	firstPart = parseInt(firstPart, 36);
+	
+	for(i=0; i<pokemon.length; i++){
+		if(pokemon[i][8]==firstPart){
+			document.nForm.elements['pokename'].value = pokemon[i][0];
+			break;
+		}
+	}
+	
+	//ポケモンの努力値
+	num = 2; // 文字数を指定
+	for(i=0; i<6;i++){
+		firstPart = text.substring(0, num);
+		text = text.substring(num);
+		targetElement[dn[i]].value = parseInt(firstPart, 36);
+	}
+	
+	
+	//ポケモンの個体値
+	num = 1; // 文字数を指定
+	for(i=0; i<6;i++){
+		firstPart = text.substring(0, num);
+		text = text.substring(num);
+		targetElement[kn[i]].value = parseInt(firstPart, 36);
+	}
+	
+	//ポケモンの性格値
+	firstPart = parseInt(text, 36);
+	let syou = Math.foor(firstPart/6);
+	let amari = firstPart % 6;
+	for(i=1;i<6;i++){
+		if(i == syou){
+			targetElement[chup[i]].checked = true
+		}
+	}
+	for(i=1;i<6;i++){
+		if(i == amari){
+			targetElement[chdw[i]].checked = true
+		}
+	}
+	
+	//種族値代入
+	setpokemon();
+}
+	
+	
+	
