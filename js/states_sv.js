@@ -1482,6 +1482,8 @@ function readurl(){
 	let text = currentURL.replace(baseURL, "");
 	let num;
 	let firstPart;
+	let syou;
+	let amari;
 	
 	//ポケモン名の判定
 	num = 3; // 文字数を指定
@@ -1515,8 +1517,8 @@ function readurl(){
 	
 	//ポケモンの性格値
 	firstPart = parseInt(text, 36);
-	let syou = Math.foor(firstPart/6);
-	let amari = firstPart % 6;
+	syou = Math.foor(firstPart/6);
+	amari = firstPart % 6;
 	for(i=1;i<6;i++){
 		if(i == syou){
 			targetElement[chup[i]].checked = true;
