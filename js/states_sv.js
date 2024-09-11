@@ -1516,19 +1516,19 @@ function readurl(){
 	}
 	
 	//ポケモンの性格値
-	firstPart = parseInt(text, 36);
-	syou = Math.foor(firstPart/6);
-	amari = firstPart % 6;
-	for(i=1;i<6;i++){
-		if(i == syou){
-			targetElement[chup[i]].checked = true;
-		}
-	}
-	for(i=1;i<6;i++){
-		if(i == amari){
-			targetElement[chdw[i]].checked = true;
-		}
-	}
+	//firstPart = parseInt(text, 36);
+	//syou = Math.foor(firstPart/6);
+	//amari = firstPart % 6;
+	//for(i=1;i<6;i++){
+	//	if(i == syou){
+	//		targetElement[chup[i]].checked = true;
+	//	}
+	//}
+	//for(i=1;i<6;i++){
+	//	if(i == amari){
+	//		targetElement[chdw[i]].checked = true;
+	//	}
+	//}
 	
 	//種族値代入
 	setpokemon();
