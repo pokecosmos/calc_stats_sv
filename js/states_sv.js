@@ -1416,12 +1416,12 @@ function makeurl(){
 	//ポケモンの性格値
 	num=0;
 	for(i=1;i<6;i++){
-		if(targetElement[chup[i]].checked === true){
-			num += i*6;
+		if(targetElement[chup[i]].checked == true){
+			num = i*6;
 		}
 	}
 	for(i=1;i<6;i++){
-		if(targetElement[chdw[i]].checked === true){
+		if(targetElement[chdw[i]].checked == true){
 			num += i;
 		}
 	}
@@ -1531,6 +1531,5 @@ function readurl(){
 	//種族値代入
 	setpokemon();
 }
-	
-	
+
 	
