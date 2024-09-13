@@ -857,6 +857,12 @@ function get_tyousei(){
 //キーボード操作用
 //-----------------------------------------------
 document.addEventListener('keydown', function(event) {
+	// IMEのモードをチェック
+    if (navigator.language === 'ja' && event.isComposing) {
+        // カナモードの場合は処理を中断
+        return;
+    }
+	
     if (event.key === 's') {
     	event.preventDefault();
         Keydown1();
