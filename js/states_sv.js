@@ -915,7 +915,9 @@ function Keydown1() {
         	document.nForm.elements[chdw[i+1]].focus(); return;
     	}
     }
-    if (document.activeElement === targetElement['pokename']) {
+    if (document.activeElement === document.getElementById('kirikae')) {
+        document.nForm.elements['pokename'].focus();
+	}else if (document.activeElement === targetElement['pokename']) {
         document.nForm.elements['L0'].focus();
     }else if (document.activeElement === targetElement['L0']) {
         document.nForm.elements[nn[0]].focus();
@@ -1018,8 +1020,10 @@ function Keydown2() {
         	document.nForm.elements[chdw[i]].focus(); return;
     	}
     }
-    
-    if (document.activeElement === targetElement['L0']) {
+	
+    if (document.activeElement === targetElement['pokename']) {
+    	document.getElementById('kirikae').focus();
+    }else if (document.activeElement === targetElement['L0']) {
         document.nForm.elements['pokename'].focus();
     }else if (document.activeElement === targetElement['L1']) {
         document.nForm.elements['pokename'].focus();
@@ -1081,7 +1085,6 @@ function Keydown2() {
         document.nForm.elements['mega2'].focus();
         
     //何もしない
-    }else if (document.activeElement === targetElement['pokename']) {
     }else if (document.activeElement === targetElement[chup[1]]) {
     }else if (document.activeElement === targetElement[chdw[1]]) {
     
