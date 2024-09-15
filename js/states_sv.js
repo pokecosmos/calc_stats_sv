@@ -857,19 +857,18 @@ function get_tyousei(){
 //キーボード操作用
 //-----------------------------------------------
 	
-document.addEventListener('beforeinput', (event) => {
-  if (event.isComposing) {
-    // IME入力中の場合は処理を中断
-    return;
-  }
-});
+// macOSを検出する関数
+function isMacOS() {
+    return /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+}
 
-document.addEventListener('keydown', function(event) {
-    if (event.isComposing) {
-        // IME入力中の場合は処理を中断
+// キーイベントの処理関数
+function handleKeydown(event) {
+    if (isMacOS()) {
+        // macOSの場合は処理を中断
         return;
     }
-    
+
     switch (event.key) {
         case 's':
             event.preventDefault();
@@ -897,7 +896,10 @@ document.addEventListener('keydown', function(event) {
             Keydown7();
             break;
     }
-});
+}
+
+// キーイベントリスナーを追加
+document.addEventListener('keydown', handleKeydown);
 
 //下にフォーカス移動-------------------------------------------------
 function Keydown1() {
