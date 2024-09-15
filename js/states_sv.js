@@ -859,7 +859,6 @@ function get_tyousei(){
 	
 document.addEventListener('beforeinput', (event) => {
   if (event.isComposing) {
-    console.log('IME入力中');
     // IME入力中の場合は処理を中断
     return;
   }
