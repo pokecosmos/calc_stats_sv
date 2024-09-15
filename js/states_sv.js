@@ -856,31 +856,47 @@ function get_tyousei(){
 //---------------------------------------
 //キーボード操作用
 //-----------------------------------------------
+	
+document.addEventListener('beforeinput', (event) => {
+  if (event.isComposing) {
+    console.log('IME入力中');
+    // IME入力中の場合は処理を中断
+    return;
+  }
+});
+
 document.addEventListener('keydown', function(event) {
-	// IMEのモードをチェック
-    if (navigator.language === 'ja' && event.isComposing) {
-        // カナモードの場合は処理を中断
+    if (event.isComposing) {
+        // IME入力中の場合は処理を中断
         return;
     }
-	
-    if (event.key === 's') {
-    	event.preventDefault();
-        Keydown1();
-    }else if (event.key === 'w') {
-    	event.preventDefault();
-        Keydown2();
-    }else if (event.key === 'a') {
-    	event.preventDefault();
-        Keydown3();
-    }else if (event.key === 'd') {
-    	event.preventDefault();
-        Keydown4();
-    }else if (event.key === 'Enter') {
-    	Keydown5();
-    }else if (event.key === 'r') {
-    	Keydown6();
-    }else if (event.key === 'f') {
-    	Keydown7();
+    
+    switch (event.key) {
+        case 's':
+            event.preventDefault();
+            Keydown1();
+            break;
+        case 'w':
+            event.preventDefault();
+            Keydown2();
+            break;
+        case 'a':
+            event.preventDefault();
+            Keydown3();
+            break;
+        case 'd':
+            event.preventDefault();
+            Keydown4();
+            break;
+        case 'Enter':
+            Keydown5();
+            break;
+        case 'r':
+            Keydown6();
+            break;
+        case 'f':
+            Keydown7();
+            break;
     }
 });
 
