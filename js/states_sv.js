@@ -474,7 +474,7 @@ function taikyu_tyosei(){
 	document.nForm.elements[nn[0]].value = x_nh;
 	document.nForm.elements[nn[2]].value = x_nb;
 	document.nForm.elements[nn[4]].value = x_nd;
-	dcalc(0);dcalc(2); dcalc(4);
+	dcalc(0); dcalc(2); dcalc(4);
 }
 
 //調整チェック計算用　実数値計算
